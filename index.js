@@ -3,14 +3,14 @@
     const projects = [
       {
         title: "Vision",
-        iconClass: "fas fa-eye",
-        tech: ["React", "TensorFlow.js", "Python"],
+        image: "WhatsApp Image 2026-04-16 at 1.40.55 AM.jpeg",
+        tech: ["JavaScript", "TensorFlow.js", "Python"],
         desc: "AI-powered visual recognition tool that identifies objects and scenes in real-time with high accuracy.",
-        link: "#"
+        link: "https://vision-anurag-kumars-projects-dc20b91f.vercel.app/"
       },
       {
         title: "E-Votify",
-        iconClass: "fas fa-vote-yea",
+        image: "WhatsApp Image 2026-04-16 at 1.40.55 AM.jpeg",
         tech: ["Solidity", "Ethers.js", "Node.js"],
         desc: "Decentralized voting platform ensuring transparency, security, and verifiable election results.",
         link: "#"
@@ -24,7 +24,7 @@
       projectsGrid.innerHTML = projects.map((proj, idx) => `
         <div class="project-row">
           <div class="project-visual">
-            <i class="${proj.iconClass} project-icon"></i>
+        <img src="${proj.image}" alt="${proj.title}" class="project-img">
           </div>
           <div class="project-content">
             <h3 class="project-title">${proj.title}</h3>
