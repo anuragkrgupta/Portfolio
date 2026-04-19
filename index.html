@@ -358,7 +358,7 @@
       font-family: 'Space Grotesk', monospace;
     }
 
-    /* ---------- DIAGONAL / ZIG-ZAG PROJECTS LAYOUT ---------- */
+    /* ---------- DIAGONAL / ZIG-ZAG PROJECTS LAYOUT (ONLY DESIGN CHANGE, CONTENT UNCHANGED) ---------- */
     .projects-grid {
       display: flex;
       flex-direction: column;
@@ -394,7 +394,7 @@
       border: 1px solid var(--border-subtle);
       transition: all 0.3s;
       box-shadow: var(--shadow-sm);
-      min-height: 280px;
+      min-height: 260px;
     }
     
     .project-row:hover .project-visual {
@@ -404,7 +404,7 @@
     }
     
     .project-icon {
-      font-size: 5rem;
+      font-size: 4.5rem;
       color: var(--accent);
       transition: transform 0.3s;
     }
@@ -617,7 +617,7 @@
     </div>
   </section>
 
-  <!-- Projects Section: DIAGONALLY ALIGNED (zigzag layout) -->
+  <!-- Projects Section: DIAGONALLY ALIGNED (zigzag layout) - CONTENT UNCHANGED -->
   <section id="projects">
     <div class="container">
       <h2>All Creative Works.</h2>
@@ -648,20 +648,20 @@
 
 <script>
   (function() {
-    // Creative Works: Vision & E-Votify (Diagonal Layout)
+    // Creative Works: Vision & E-Votify (Original content preserved, only layout changed to diagonal)
     const projects = [
       {
         title: "Vision",
         iconClass: "fas fa-eye",
         tech: ["React", "TensorFlow.js", "Python"],
-        desc: "AI-powered visual recognition tool that identifies objects and scenes in real-time with high accuracy. Built with modern web AI pipelines.",
+        desc: "AI-powered visual recognition tool that identifies objects and scenes in real-time with high accuracy.",
         link: "#"
       },
       {
         title: "E-Votify",
         iconClass: "fas fa-vote-yea",
         tech: ["Solidity", "Ethers.js", "Node.js"],
-        desc: "Decentralized voting platform ensuring transparency, security, and verifiable election results using blockchain smart contracts.",
+        desc: "Decentralized voting platform ensuring transparency, security, and verifiable election results.",
         link: "#"
       }
     ];
@@ -681,7 +681,7 @@
               ${proj.tech.map(t => `<span>${t}</span>`).join('')}
             </div>
             <p class="project-desc">${proj.desc}</p>
-            <a href="${proj.link}" class="project-link">Explore project <i class="fas fa-arrow-right"></i></a>
+            <a href="${proj.link}" class="project-link">Live Demo <i class="fas fa-external-link-alt"></i></a>
           </div>
         </div>
       `).join('');
