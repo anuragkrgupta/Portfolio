@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Anurag Kumar | Developer Portfolio</title>
+  <title>Abdul Rahman | Developer Portfolio</title>
   <!-- Google Fonts: Inter & Space Grotesk for modern tech look -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 (free icons) -->
@@ -22,7 +22,7 @@
       --border-subtle: rgba(255,255,255,0.06);
       --shadow-sm: 0 10px 25px -5px rgba(0,0,0,0.5);
       --shadow-hover: 0 20px 30px -12px rgba(0,255,159,0.15);
-      --pattern-opacity: 0.03;
+      --pattern-opacity: 0.04;
     }
 
     /* Light mode variables */
@@ -37,7 +37,7 @@
       --border-subtle: rgba(0,0,0,0.08);
       --shadow-sm: 0 8px 20px rgba(0,0,0,0.05);
       --shadow-hover: 0 20px 28px -12px rgba(5,150,105,0.2);
-      --pattern-opacity: 0.02;
+      --pattern-opacity: 0.03;
     }
 
     * {
@@ -161,20 +161,53 @@
       cursor: pointer;
     }
 
-    /* Hero Section */
+    /* Hero Section with Dotted Grid behind name and photo */
     .hero {
       position: relative;
       padding: 5rem 0 4rem;
+      overflow: hidden;
     }
-    .hero::before {
-      content: "";
+    
+    /* Dotted Grid Pattern Container */
+    .dotted-grid-bg {
       position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 10% 30%, var(--accent) 1px, transparent 1px);
-      background-size: 28px 28px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+    
+    .grid-spot-1 {
+      position: absolute;
+      top: 15%;
+      left: 0;
+      width: 55%;
+      height: 65%;
+      background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
       opacity: var(--pattern-opacity);
+      mask-image: linear-gradient(135deg, black 40%, transparent 80%);
+      -webkit-mask-image: linear-gradient(135deg, black 40%, transparent 80%);
       pointer-events: none;
     }
+    
+    .grid-spot-2 {
+      position: absolute;
+      bottom: 10%;
+      right: 0;
+      width: 45%;
+      height: 55%;
+      background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      opacity: var(--pattern-opacity);
+      mask-image: linear-gradient(225deg, black 30%, transparent 85%);
+      -webkit-mask-image: linear-gradient(225deg, black 30%, transparent 85%);
+      pointer-events: none;
+    }
+    
     .hero-content {
       max-width: 780px;
       position: relative;
@@ -188,7 +221,7 @@
       font-size: 1rem;
     }
     .hero h1 {
-      font-size: 4.5rem;
+      font-size: 4.8rem;
       line-height: 1.1;
       margin-bottom: 1rem;
     }
@@ -261,6 +294,7 @@
       gap: 3rem;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
     }
     .about-text {
       flex: 1.5;
@@ -278,6 +312,21 @@
       flex: 0.8;
       display: flex;
       justify-content: center;
+      position: relative;
+    }
+    .about-image::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 180px;
+      height: 180px;
+      background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: -1;
+      border-radius: 50%;
     }
     .avatar-circle {
       width: 220px;
@@ -289,6 +338,8 @@
       justify-content: center;
       box-shadow: 0 25px 35px -12px rgba(0,0,0,0.3);
       transition: transform 0.3s;
+      position: relative;
+      z-index: 2;
     }
     .avatar-circle:hover {
       transform: scale(1.02);
@@ -307,77 +358,127 @@
       font-family: 'Space Grotesk', monospace;
     }
 
-    /* Projects Grid - 2 columns, but we only have 2 projects */
+    /* ---------- DIAGONAL / ZIG-ZAG PROJECTS LAYOUT ---------- */
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
     }
-    .project-card {
+    
+    /* Each project row uses flex with alternating order for diagonal feel */
+    .project-row {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      transition: all 0.3s ease;
+    }
+    
+    /* Odd row: image left, content right */
+    .project-row:nth-child(odd) {
+      flex-direction: row;
+    }
+    
+    /* Even row: image right, content left -> creates diagonal / zigzag */
+    .project-row:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .project-visual {
+      flex: 1;
       background: var(--bg-card);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-sm);
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--accent);
-    }
-    .project-img {
-      background: #1e1e1e;
-      height: 180px;
-      border-radius: 1rem;
+      border-radius: 1.8rem;
+      padding: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      font-size: 3rem;
-      background-color: #222;
-      overflow: hidden;
-      position: relative;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s;
+      box-shadow: var(--shadow-sm);
+      min-height: 280px;
     }
-    [data-theme="light"] .project-img {
-      background-color: #e2e8f0;
+    
+    .project-row:hover .project-visual {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent);
     }
-    .project-img i {
-      font-size: 4rem;
+    
+    .project-icon {
+      font-size: 5rem;
       color: var(--accent);
+      transition: transform 0.3s;
     }
+    
+    .project-row:hover .project-icon {
+      transform: scale(1.05);
+    }
+    
+    .project-content {
+      flex: 1;
+    }
+    
     .project-title {
-      font-size: 1.6rem;
-      margin: 0.75rem 0 0.3rem;
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
     }
+    
     .tech-badge {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: 0.8rem 0;
+      gap: 0.7rem;
+      margin: 1rem 0;
     }
+    
     .tech-badge span {
       background: var(--bg-primary);
-      padding: 0.2rem 0.7rem;
+      padding: 0.25rem 0.9rem;
       border-radius: 30px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--accent);
       border: 1px solid var(--border-subtle);
     }
+    
     .project-desc {
       color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin: 0.5rem 0;
+      line-height: 1.5;
+      margin: 1rem 0 1.2rem;
     }
+    
     .project-link {
-      margin-top: 1rem;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      transition: gap 0.2s;
+    }
+    
+    .project-link:hover {
+      gap: 12px;
+    }
+    
+    /* Responsive: on tablet/mobile, diagonal becomes stacked */
+    @media (max-width: 850px) {
+      .project-row, .project-row:nth-child(odd), .project-row:nth-child(even) {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .project-visual {
+        width: 100%;
+        min-height: 200px;
+      }
+      .project-content {
+        text-align: center;
+      }
+      .tech-badge {
+        justify-content: center;
+      }
+      .project-title {
+        font-size: 1.8rem;
+      }
     }
 
     /* Contact Section */
@@ -411,15 +512,8 @@
       font-size: 0.85rem;
     }
 
-    /* Responsive */
+    /* Responsive extras */
     @media (max-width: 850px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      .about-grid {
-        flex-direction: column-reverse;
-        text-align: center;
-      }
       .hero h1 {
         font-size: 3rem;
       }
@@ -452,6 +546,9 @@
       .btn-group {
         justify-content: center;
       }
+      .grid-spot-1, .grid-spot-2 {
+        opacity: 0.3;
+      }
     }
     @media (max-width: 500px) {
       .container {
@@ -481,18 +578,21 @@
 <main>
   <!-- Hero Section -->
   <section id="home" class="hero">
+    <div class="dotted-grid-bg">
+      <div class="grid-spot-1"></div>
+      <div class="grid-spot-2"></div>
+    </div>
     <div class="container hero-content">
       <div class="hero-intro">✨ Hey there, I'm –</div>
-      <h1>Anurag Kumar</h1>
-      <div class="hero-sub">Software Developer | Frontend Developer</div>
-      <div class="hero-desc">Crafting fast, elegant web experiences with modern tools. Passionate about AI and human-centric design.</div>
+      <h1>Abdul Rahman.</h1>
+      <div class="hero-sub">Software Engineer. A self-taught developer with an interest in Computer Science.</div>
+      <div class="hero-desc">Currently specializing in Next.js (React) + AI tools to build scalable, intelligent applications.</div>
       <ul class="bullet-list">
-        <li><i class="fas fa-rocket"></i> 🚀 Currently learning: <strong class="highlight">Machine learning & AI</strong></li>
-        <li><i class="fas fa-code"></i> ⚡ Role: Full-stack engineer & open source contributor</li>
+        <li><i class="fas fa-rocket"></i> 🚀 Currently learning: <strong class="highlight">Advanced AI & LLM fine-tuning</strong></li>
+        <li><i class="fas fa-code"></i> ⚡ Role: Full-stack engineer & AI enthusiast</li>
       </ul>
       <div class="btn-group">
-        <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
-        <a href="#" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="#" class="btn btn-outline"><i class="fas fa-envelope"></i> Email</a>
       </div>
     </div>
@@ -504,20 +604,20 @@
       <h2>About Me.</h2>
       <div class="about-grid">
         <div class="about-text">
-          <p>I'm <span class="highlight">Anurag Kumar</span>, a software developer who loves turning complex problems into simple, beautiful interfaces. My journey began with building small scripts, and over the last 4+ years, I've evolved into crafting full-stack applications with <span class="highlight">React, Node, and Python</span>.</p>
-          <p>Driven by curiosity, I'm currently diving deep into <span class="highlight">Machine Learning</span> to merge AI with creative dev tools. When I'm not coding, I contribute to open-source and design minimalist digital experiences.</p>
-          <p>I believe in writing clean, performant code and designing for humans. Let's build something impactful!</p>
+          <p>I'm <span class="highlight">Abdul Rahman</span>, a self-taught software engineer passionate about building meaningful tech. My curiosity for computer science started early, and I've since developed a strong foundation in modern web technologies and AI integration.</p>
+          <p>I specialize in <span class="highlight">Next.js, React, and AI tooling</span>, constantly exploring how machine learning can enhance user experiences. Currently, I'm diving deep into LLM applications and agentic workflows.</p>
+          <p>When not coding, I contribute to open-source, write technical blogs, and mentor aspiring developers. Let's create something impactful together!</p>
         </div>
         <div class="about-image">
           <div class="avatar-circle">
-            <span>AK</span>
+            <span>AR</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section - only Vision and E-Votify -->
+  <!-- Projects Section: DIAGONALLY ALIGNED (zigzag layout) -->
   <section id="projects">
     <div class="container">
       <h2>All Creative Works.</h2>
@@ -530,7 +630,7 @@
     <div class="container">
       <div class="contact-area">
         <h2>Keep In Touch.</h2>
-        <p style="color: var(--text-secondary); max-width: 500px; margin: 1rem auto;">Open to collaborations, freelance work, or just a chat about tech.</p>
+        <p style="color: var(--text-secondary); max-width: 500px; margin: 1rem auto;">Open to collaborations, freelance work, or just a chat about tech & AI.</p>
         <div class="contact-buttons">
           <a href="#" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="#" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
@@ -542,52 +642,54 @@
 </main>
 
 <footer>
-  <p>Designed and Developed by Anurag Kumar</p>
+  <p>Designed and Developed by Abdul Rahman</p>
   <p>Built with HTML, CSS, JS — Modern developer portfolio</p>
 </footer>
 
 <script>
   (function() {
-    // ---------- ONLY TWO CREATIVE WORKS: Vision & E-Votify ----------
+    // Creative Works: Vision & E-Votify (Diagonal Layout)
     const projects = [
       {
         title: "Vision",
         iconClass: "fas fa-eye",
         tech: ["React", "TensorFlow.js", "Python"],
-        desc: "AI-powered visual recognition tool that identifies objects and scenes in real-time with high accuracy.",
+        desc: "AI-powered visual recognition tool that identifies objects and scenes in real-time with high accuracy. Built with modern web AI pipelines.",
         link: "#"
       },
       {
         title: "E-Votify",
         iconClass: "fas fa-vote-yea",
         tech: ["Solidity", "Ethers.js", "Node.js"],
-        desc: "Decentralized voting platform ensuring transparency, security, and verifiable election results.",
+        desc: "Decentralized voting platform ensuring transparency, security, and verifiable election results using blockchain smart contracts.",
         link: "#"
       }
     ];
 
     const projectsGrid = document.getElementById("projectsGrid");
     
-    function renderProjects() {
+    function renderDiagonalProjects() {
       if (!projectsGrid) return;
-      projectsGrid.innerHTML = projects.map(proj => `
-        <div class="project-card">
-          <div class="project-img">
-            <i class="${proj.iconClass}"></i>
+      projectsGrid.innerHTML = projects.map((proj, idx) => `
+        <div class="project-row">
+          <div class="project-visual">
+            <i class="${proj.iconClass} project-icon"></i>
           </div>
-          <h3 class="project-title">${proj.title}</h3>
-          <div class="tech-badge">
-            ${proj.tech.map(t => `<span>${t}</span>`).join('')}
+          <div class="project-content">
+            <h3 class="project-title">${proj.title}</h3>
+            <div class="tech-badge">
+              ${proj.tech.map(t => `<span>${t}</span>`).join('')}
+            </div>
+            <p class="project-desc">${proj.desc}</p>
+            <a href="${proj.link}" class="project-link">Explore project <i class="fas fa-arrow-right"></i></a>
           </div>
-          <p class="project-desc">${proj.desc}</p>
-          <a href="${proj.link}" class="project-link">Live Demo <i class="fas fa-external-link-alt"></i></a>
         </div>
       `).join('');
     }
 
-    renderProjects();
+    renderDiagonalProjects();
 
-    // ---------- LIGHT/DARK MODE TOGGLE (small button, same logic) ----------
+    // ---------- LIGHT/DARK MODE TOGGLE ----------
     const themeToggleBtn = document.getElementById("themeToggleBtn");
     const rootHtml = document.documentElement;
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -614,7 +716,7 @@
       });
     }
     
-    // ---------- HAMBURGER MENU (Responsive) ----------
+    // ---------- HAMBURGER MENU ----------
     const hamburger = document.getElementById("hamburgerBtn");
     const navLinksDiv = document.getElementById("navLinks");
     if (hamburger && navLinksDiv) {
@@ -635,7 +737,7 @@
       });
     }
     
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function(e) {
         const targetId = this.getAttribute("href");
@@ -649,7 +751,7 @@
       });
     });
     
-    // Active link highlight on scroll
+    // Active link highlight
     const sections = document.querySelectorAll("section");
     const navItems = document.querySelectorAll(".nav-links a[href^='#']");
     function updateActiveLink() {
@@ -677,4 +779,4 @@
   })();
 </script>
 </body>
-</html>  
+</html>
