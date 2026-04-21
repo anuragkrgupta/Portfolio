@@ -3,15 +3,15 @@
     const projects = [
       {
         title: "Vision",
-        image: "WhatsApp Image 2026-04-16 at 1.40.55 AM.jpeg",
+        image: "res/WhatsApp Image 2026-04-16 at 1.40.55 AM.jpeg",
         tech: ["JavaScript", "TensorFlow.js", "Python"],
         desc: "AI-powered visual recognition tool that identifies objects and scenes in real-time with high accuracy.",
         link: "https://vision-anurag-kumars-projects-dc20b91f.vercel.app/"
       },
       {
         title: "E-Votify",
-        image: "WhatsApp Image 2026-04-16 at 1.40.55 AM.jpeg",
-        tech: ["Solidity", "Ethers.js", "Node.js"],
+        image: "res/web-election-people-choose-president-members-parliament-congressmen-candidats-online-electoral-system-269536235.webp",
+        tech: ["Php", "JavaScript", "MySql"],
         desc: "Decentralized voting platform ensuring transparency, security, and verifiable election results.",
         link: "#"
       }
