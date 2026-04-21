@@ -22,8 +22,7 @@
     function renderDiagonalProjects() {
       if (!projectsGrid) return;
       projectsGrid.innerHTML = projects.map((proj, idx) => `
-        <div class="project-row">
-          <div class="project-visual">
+        <div class="project-row reveal ${idx % 2 === 0 ? 'reveal-left' : 'reveal-right'}">          <div class="project-visual">
         <img src="${proj.image}" alt="${proj.title}" class="project-img">
           </div>
           <div class="project-content">
@@ -128,3 +127,26 @@
     window.addEventListener("scroll", updateActiveLink);
     updateActiveLink();
   })();
+
+  // ---------- SCROLL REVEAL ANIMATION ----------
+function initScrollReveal() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 100) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // run on load
+}
+
+// Run after projects are rendered
+initScrollReveal();
