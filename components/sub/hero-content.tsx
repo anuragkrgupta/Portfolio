@@ -17,46 +17,66 @@ export const HeroContent = () => {
       animate="visible"
       className="flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]"
     >
+      {/* LEFT CONTENT */}
       <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-start">
+
         <motion.div
           variants={slideInFromTop}
-          className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9]]"
+          className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b]"
         >
           <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
+
           <h1 className="Welcome-text text-[13px]">
-            Fullstack Developer Portfolio
+            Full-Stack Developer • AI Builder • Computer Vision Enthusiast
           </h1>
         </motion.div>
 
+        {/* NAME */}
         <motion.div
-          variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-6 mt-6 text-6xl text-bold text-white max-w-[600px] w-auto h-auto"
+          variants={slideInFromLeft(0.3)}
+          className="text-7xl font-extrabold text-white mt-6"
         >
-          <span>
-            Providing{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              the best
-            </span>{" "}
-            project experience.
+          Hi, I’m{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-cyan-400">
+            Anurag Kumar
           </span>
         </motion.div>
 
+        {/* MAIN HEADLINE */}
+        <motion.div
+          variants={slideInFromLeft(0.5)}
+          className="flex flex-col gap-6 text-5xl font-bold text-white max-w-[700px]"
+        >
+          <span>
+            Building{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+              intelligent systems
+            </span>{" "}
+            and scalable digital products.
+          </span>
+        </motion.div>
+
+        {/* DESCRIPTION */}
         <motion.p
           variants={slideInFromLeft(0.8)}
-          className="text-lg text-gray-400 my-5 max-w-[600px]"
+          className="text-lg text-gray-400 my-5 max-w-[650px]"
         >
-          I&apos;m a Full Stack Software Engineer with experience in Website,
-          Mobile, and Software development. Check out my projects and skills.
+          I build full-stack applications, AI-powered tools, and accessibility-focused solutions —
+          from Evotify, a secure online voting platform, to VISION, a real-time object detection
+          system designed for visually impaired users.
         </motion.p>
 
+        {/* BUTTON */}
         <motion.a
           variants={slideInFromLeft(1)}
-          className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
+          className="py-3 button-primary text-center text-white cursor-pointer rounded-lg max-w-[220px]"
         >
-          Learn more
+          Explore My Work
         </motion.a>
+
       </div>
 
+      {/* RIGHT IMAGE */}
       <motion.div
         variants={slideInFromRight(0.8)}
         className="w-full h-full flex justify-center items-center"
@@ -70,6 +90,7 @@ export const HeroContent = () => {
           className="select-none"
         />
       </motion.div>
+
     </motion.div>
   );
 };
