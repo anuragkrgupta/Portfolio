@@ -2,16 +2,13 @@
   "name": "anurag-portfolio",
   "version": "1.0.1",
   "private": true,
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
   },
-
   "description": "Personal developer portfolio built with Next.js",
-
   "keywords": [
     "portfolio",
     "nextjs",
@@ -19,6 +16,28 @@
     "typescript",
     "tailwindcss"
   ],
-
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "maath": "^0.10.8",
+    "next": "^16.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-icons": "^5.6.0",
+    "react-intersection-observer": "^10.0.3",
+    "tailwind-merge": "^3.5.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "25.6.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.19",
+    "typescript": "6.0.3"
+  }
 }
