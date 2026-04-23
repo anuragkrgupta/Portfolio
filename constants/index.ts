@@ -245,18 +245,18 @@ export const OTHER_SKILL = [
 ] as const;
 
 export const PROJECTS = [
-{
-
-image: "/projects/evotify.png",
-link: "#",
-},
-
-{
-
-image: "/projects/vision.png",
-link: "https://vision-anurag-kumars-projects-dc20b91f.vercel.app/",
-}
-
+  {
+    title: "Evotify",
+    description: "A secure online voting platform with encrypted transactions and real-time results.",
+    image: "/projects/evotify.png",
+    link: "#",
+  },
+  {
+    title: "VISION",
+    description: "Real-time object detection system designed for visually impaired users.",
+    image: "/projects/vision.png",
+    link: "https://vision-anurag-kumars-projects-dc20b91f.vercel.app/",
+  },
 ] as const;
 
 export const FOOTER_DATA = [
