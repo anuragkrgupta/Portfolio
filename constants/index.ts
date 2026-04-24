@@ -249,7 +249,7 @@ export const PROJECTS = [
     title: "Evotify",
     description: "A secure online voting platform with encrypted transactions and real-time results.",
     image: "/projects/evotify.png",
-    link: "#",
+    link: "",
   },
   {
     title: "VISION",
